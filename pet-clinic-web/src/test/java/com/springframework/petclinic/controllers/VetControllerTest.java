@@ -4,6 +4,7 @@ import com.springframework.petclinic.model.Vet;
 import com.springframework.petclinic.services.VetService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,6 +21,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
+@DisplayName("VetController Unit Test")
 class VetControllerTest {
 
     @Mock

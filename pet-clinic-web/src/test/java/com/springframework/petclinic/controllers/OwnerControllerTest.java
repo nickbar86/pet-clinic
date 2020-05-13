@@ -4,6 +4,7 @@ import com.springframework.petclinic.model.Owner;
 import com.springframework.petclinic.services.OwnerService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -21,6 +22,7 @@ import java.util.Set;
 
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("OwnerController Unit Test")
 class OwnerControllerTest {
 
     @Mock
