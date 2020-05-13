@@ -16,6 +16,8 @@ jobs: # a collection of steps
           - v1-dependencies-{{ checksum "pom.xml" }}
           - v1-dependencies
 
+      - run: mvn install -DskipTests
+
       - run: mvn dependency:go-offline # gets the project dependencies
 
       - save_cache: # saves the project dependencies
@@ -23,4 +25,4 @@ jobs: # a collection of steps
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run: mvn install # run the actual tests
+      - run: mvn integration-test # run the actual tests
