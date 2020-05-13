@@ -3,12 +3,14 @@ package com.springframework.petclinic.services.map;
 import com.springframework.petclinic.model.Owner;
 import com.springframework.petclinic.model.Pet;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("OwnerMapService Unit Test")
 class OwnerMapServiceTest {
 
     public static final long ID2 = 2L;
