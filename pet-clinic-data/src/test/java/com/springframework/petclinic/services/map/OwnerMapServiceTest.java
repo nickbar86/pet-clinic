@@ -32,7 +32,6 @@ class OwnerMapServiceTest {
 
     @Test
     void findById() {
-
         Owner owner = ownerMapService.findById(ownerId);
         assertEquals(ownerId, owner.getId());
     }
