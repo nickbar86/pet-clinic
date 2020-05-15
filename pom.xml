@@ -20,7 +20,29 @@
 
     <properties>
         <java.version>11</java.version>
+        <mave.compiler.source>${java.version}</mave.compiler.source>
+        <mave.compiler.target>${java.version}</mave.compiler.target>
+        <jaxb.sun.version>2.3.0.1</jaxb.sun.version>
+        <jaxb.version>2.3.1</jaxb.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${jaxb.sun.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.sun.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -36,6 +58,24 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18</version>
+                <configuration>
+                    <argLine>
+                        -illegal-access=permit
+                    </argLine>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
         </plugins>
     </build>
     <scm>

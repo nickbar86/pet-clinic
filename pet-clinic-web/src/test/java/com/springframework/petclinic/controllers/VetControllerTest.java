@@ -1,5 +1,6 @@
 package com.springframework.petclinic.controllers;
 
+import com.jayway.jsonpath.JsonPath;
 import com.springframework.petclinic.model.Vet;
 import com.springframework.petclinic.services.VetService;
 import org.hamcrest.Matchers;
@@ -11,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -20,6 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("VetController Unit Test")
 class VetControllerTest {
@@ -49,5 +52,25 @@ class VetControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("vets/index"))
                 .andExpect(MockMvcResultMatchers.model().attribute("vets", Matchers.hasSize(2)));
+    }
+
+    @Test
+    void getVetsJson() throws Exception {
+        Mockito.when(vetService.findAll()).thenReturn(vets);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/vets"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.length()", Matchers.is(2)));
+    }
+
+    @Test
+    void getEmptyVetsJson() throws Exception {
+        Mockito.when(vetService.findAll()).thenReturn(new HashSet<>());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/vets"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.length()", Matchers.is(0)));
     }
 }
