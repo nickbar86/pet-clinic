@@ -3,11 +3,13 @@ package com.springframework.petclinic.bootstrap;
 import com.springframework.petclinic.model.*;
 import com.springframework.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
+@Profile({"dev","default"})
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;

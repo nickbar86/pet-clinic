@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/pet_clinic_dev
+    username: pet_clinic_dev_user
+    password: app
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+    #propertied:
+    #  javax:
+    #    peristence:
+    #      schema-generation:
+    #        create-source: metadata
+    #        scripts:
+    #          action: create
+    #          create-target: pet_clinic_schema.sql
